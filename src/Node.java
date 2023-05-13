@@ -1,5 +1,5 @@
 public class Node {
-    State currentState;
+    private State currentState;
     Node root;
     Action prevAction;
 
