@@ -55,6 +55,12 @@ private Tile[][] tiles;
         return Arrays.deepEquals(tiles, board.tiles);
     }
 
+    public static void swap(Tile tile1, Tile tile2) {
+        Tile temp = tile1;
+        tile1 = tile2;
+        tile2 = tile1;
+    }
+
     @Override
     public int hashCode() {
         return Arrays.deepHashCode(tiles);
