@@ -1,6 +1,5 @@
 public class State {
-
-    @Override
+     @Override
     public boolean equals(Object other) {
         if (!(other instanceof State)) {
             return false;

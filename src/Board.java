@@ -23,6 +23,26 @@ private Tile[][] tiles;
             }
         }
     }
+    public Board (Tile[][] tiles) {
+        this.tiles = tiles;
+    }
+    public Board goalBoard() {
+        int rows = this.tiles.length;
+        int cols = this.tiles[0].length;
+        Tile[][] goalBoard = new Tile[rows][cols];
+        int counter = 0;
+        for (int i = 0; i < rows; i++) {
+            for (int j = 0; j < cols; j++) {
+                if (i == rows - 1 && j == cols - 1)
+                    goalBoard[i][j] = new Tile(0);
+                else {
+                    counter++;
+                    goalBoard[i][j] = new Tile(counter);
+                }
+            }
+        }
+        return new Board(goalBoard);
+    }
     @Override
     public boolean equals(Object other) {
         if (!(other instanceof Board)) {
