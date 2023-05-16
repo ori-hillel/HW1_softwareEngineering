@@ -21,7 +21,7 @@ private Board board;
     public boolean isGoal() {
         return this.board.equals(this.board.goalBoard());
     }
-    public State result(Action action) {
+    public State result (Action action) {
         State res = new State()
     int rowIndex=0,colIndex=0;
     for(int i = 0;i<this.board.getTiles().length;i++)

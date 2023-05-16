@@ -12,7 +12,7 @@ public class Search {
     private List<Action> result;
     private Status status = Status.UNSOLVED;
 
-    node[] Expand_arr = new node[4];
+    Node[] Expand_arr = new Node[4];
     // initialize
     // int minHeuristicValue = expand.arr[0].getHeuristic();
     // int index = 0;

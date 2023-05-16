@@ -22,7 +22,7 @@ public class Main {
             }
         }
         Node d = new Node();
-        d.getCurrentState();
+        d.getState();
 
         System.out.println("Able to solve " + successCounter + " ot of " + boards.length + " boards.");
     }

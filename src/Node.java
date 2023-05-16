@@ -1,13 +1,23 @@
 public class Node {
-    private State currentState;
+    private State state;
     Node root;
-    Action prevAction;
+    Action action;
 
-    public State getCurrentState() {
-        return this.currentState;
+    public State getState() {
+        return this.state;
+    }
+    public void setRoot(Node root) {
+        this.root = root;
     }
     public void setCurrentState(State s) {
-        this.currentState = s;
+        this.state = s;
     }
 
+    public Node[] expand() {
+        Node[] res = new Node(this.state.actions().length);
+        for (int i = 0; i < res.length; i++) {
+            res[i].setRoot(this);
+            res.
+        }
+    }
 }
