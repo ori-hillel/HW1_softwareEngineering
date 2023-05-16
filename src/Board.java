@@ -43,6 +43,9 @@ private Tile[][] tiles;
         }
         return new Board(goalBoard);
     }
+    public Tile[][] getTiles() {
+        return this.tiles;
+    }
     @Override
     public boolean equals(Object other) {
         if (!(other instanceof Board)) {
