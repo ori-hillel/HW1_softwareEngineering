@@ -17,7 +17,6 @@ public int getValue() {
         Tile tile = (Tile) other;
         return value == tile.value;
     }
-
     @Override
     public int hashCode() {
         return Integer.hashCode(value);

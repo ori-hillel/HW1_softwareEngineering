@@ -6,19 +6,26 @@ public class Action {
         this.tile = tile;
         this.direction = direction;
     }
+
     public Enum getDirection() {
         return direction;
     }
+
     public void setDirection(Enum otherDirection) {
         this.direction = otherDirection;
     }
+
     public Tile getTile() {
         return this.tile;
     }
+
     public void setTile(Tile otherTile) {
         this.tile = otherTile;
     }
+
     public String toString() {
         return String.format("Move %d %s", tile.getValue(), direction.getDirection().toLowerCase());
     }
+
+
 }

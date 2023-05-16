@@ -65,4 +65,5 @@ private Tile[][] tiles;
     public int hashCode() {
         return Arrays.deepHashCode(tiles);
     }
+
 }
