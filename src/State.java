@@ -13,4 +13,8 @@ private Board board;
     public int hashCode() {
         return board.hashCode();
     }
+    public boolean isGoal() {
+        return this.board.equals(this.board.goalBoard());
+    }
+
 }
