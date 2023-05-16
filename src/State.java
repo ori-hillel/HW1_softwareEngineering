@@ -1,5 +1,5 @@
 public class State {
-
+private Board board;
     @Override
     public boolean equals(Object other) {
         if (!(other instanceof State)) {
