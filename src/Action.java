@@ -13,7 +13,7 @@ public class Action {
         this.direction = otherDirection;
     }
     public Tile getTile() {
-        return tile;
+        return this.tile;
     }
     public void setTile(Tile otherTile) {
         this.tile = otherTile;
