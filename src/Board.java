@@ -65,7 +65,7 @@ private Tile[][] tiles;
     public static void swap(Tile tile1, Tile tile2) {
         Tile temp = tile1;
         tile1 = tile2;
-        tile2 = tile1;
+        tile2 = temp;
     }
     public int getRow(Tile tile) {
         for (int row = 0; row < this.tiles.length; row++) {

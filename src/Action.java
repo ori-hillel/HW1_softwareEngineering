@@ -25,7 +25,9 @@ public class Action {
     }
 
     public String toString() {
-        return String.format("Move %d %s", tile.getValue(), direction.getDirection().toLowerCase());
+        if (this.direction != null)
+            return String.format("Move %d %s", tile.getValue(), direction.getDirection().toLowerCase());
+        return "This is the initial Board";
     }
 
 

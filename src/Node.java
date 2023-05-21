@@ -32,6 +32,7 @@ public class Node {
         Action actions[] = this.state.actions();
         Node[] ret = new Node[actions.length];
         for (int i = 0; i < ret.length; i++) {
+            ret[i] = new Node();
             ret[i].root = this;
             ret[i].action = actions[i];
             ret[i].state = this.state.result(actions[i]);
