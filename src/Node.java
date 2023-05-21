@@ -3,16 +3,19 @@ public class Node {
     private Node root;
     private Action action;
 
-    public Node () {
-
+    public Node (State state, Action action, Node root) {
+        this.state = state;
+        this.root = root;
+        this.action = action;
     }
+    public Node () {}
     public State getState() {
         return this.state;
     }
     public void setRoot(Node root) {
         this.root = root;
     }
-    public void setCurrentState(State s) {
+    public void setState(State s) {
         this.state = s;
     }
 

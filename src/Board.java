@@ -67,7 +67,24 @@ private Tile[][] tiles;
         tile1 = tile2;
         tile2 = tile1;
     }
-
+    public int getRow(Tile tile) {
+        for (int row = 0; row < this.tiles.length; row++) {
+            for (int col = 0; col < this.tiles[0].length; col++) {
+                if (this.tiles[row][col].equals(tile))
+                    return row;
+            }
+        }
+        return this.tiles.length - 1; // will never get to this line.
+    }
+    public int getColumn(Tile tile) {
+        for (int row = 0; row < this.tiles.length; row++) {
+            for (int col = 0; col < this.tiles[0].length; col++) {
+                if (this.tiles[row][col].equals(tile))
+                    return col;
+            }
+        }
+        return this.tiles[0].length - 1; // will never get to this line.
+    }
     @Override
     public int hashCode() {
         return Arrays.deepHashCode(tiles);
