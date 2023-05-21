@@ -3,7 +3,7 @@ import java.util.Arrays;
 public class Board {
 private Tile[][] tiles;
     public Board (String tileString) {
-        String[] rows = tileString.split("|");
+        String[] rows = tileString.split("\\|");
         int rowsNum = rows.length;
         int colNum = rows[0].split(" ").length;
         tiles = new Tile[rowsNum][colNum];

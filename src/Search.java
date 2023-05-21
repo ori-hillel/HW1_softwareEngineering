@@ -11,14 +11,6 @@ public class Search {
     private int expandedNodes;
     private List<Action> result;
     private Status status = Status.UNSOLVED;
-
-    Node[] Expand_arr = new Node[4];
-    // initialize
-    // int minHeuristicValue = expand.arr[0].getHeuristic();
-    // int index = 0;
-    // for expand_arr
-    // if ( expand_arr[i] != NULL && expand.arr.getHeuristic() < minHeuristicValue )
-    // update index
     /**
      * Constructs the root node of the game based on an initial board.
      *
@@ -26,14 +18,18 @@ public class Search {
      * @return The root node used to search for a solution
      */
     private Node getRoot(String boardString) {
-        // TODO: Implement this function.
-        // NOTE: This is the only function you need to modify in this class!
+        Node ret = new Node();
+        ret.setState(new State(new Board(boardString)));
+        ret.setRoot(new Node());
+        ret.setAction(new Action());
+
+        return ret;
     }
     /**
      * Performs a Greedy Best First Search, using node heuristic function.
      *
      * @param boardString String representing the initial board
-     * @return List of actions which performing them will lead to the the goal state
+     * @return List of actions which performing them will lead to the goal state
      */
     public List<Action> search(String boardString) {
         try {
@@ -72,7 +68,7 @@ public class Search {
      * Extracts a solution from a given node by iterating backward from the node up to the root.
      * The given node satisfies node.getState().isGoal() == true.
      *
-     * @param node Node contains a the goal state
+     * @param node Node contains the goal state
      * @return List of actions to reach the goal state
      */
     private List<Action> extractSolution(Node node) {

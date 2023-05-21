@@ -6,6 +6,7 @@ public class Action {
         this.tile = tile;
         this.direction = direction;
     }
+    public Action() {}
 
     public Enum getDirection() {
         return direction;

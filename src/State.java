@@ -68,29 +68,29 @@ public class State {
        int colNum = this.board.getTiles()[0].length;
        int rowNum = this.board.getTiles().length;
        int rowIndex = 0, colIndex = 0;
+       outerLoop:
        for (int i = 0; i < this.board.getTiles().length; i++)
            for (int j = 0; j < this.board.getTiles()[0].length; j++) {
                if (this.board.getTiles()[i][j].getValue() == EMPTY) {
                    colIndex = j;
                    rowIndex = i;
-                   break;
+                   break outerLoop;
                }
            }
-       if (rowIndex + 1 < rowNum && colIndex < colNum)
+       if (rowIndex + 1 < rowNum)
            array[I_UP] = new Action(this.board.getTiles()[rowIndex + 1][colIndex], UP);
-       if (rowIndex - 1 < rowNum && colIndex < colNum)
+       if (rowIndex - 1 > 0)
            array[I_DOWN] = new Action(this.board.getTiles()[rowIndex - 1][colIndex], DOWN);
-       if (rowIndex < rowNum && colIndex + 1 < colNum)
-           array[I_RIGHT] = new Action(this.board.getTiles()[rowIndex][colIndex + 1], RIGHT);
-       if (rowIndex < rowNum && colIndex - 1 < colNum)
-           array[I_LEFT] = new Action(this.board.getTiles()[rowIndex][colIndex - 1], LEFT);
+       if (colIndex - 1 > 0)
+           array[I_RIGHT] = new Action(this.board.getTiles()[rowIndex][colIndex - 1], RIGHT);
+       if (colIndex + 1 < colNum)
+           array[I_LEFT] = new Action(this.board.getTiles()[rowIndex][colIndex + 1], LEFT);
        Action[] ret = new Action[countNulls(array)];
-       for (int retIndex = 0, auxIndex = 0; retIndex < ret.length; retIndex++, auxIndex++) {
-           if (array[auxIndex] == null) {
-               auxIndex++;
-               continue;
+       for (int retIndex = 0, auxIndex = 0; auxIndex < ret.length; auxIndex++) {
+           if (array[auxIndex] instanceof Action) {
+               ret[retIndex] = array[auxIndex];
+               retIndex++;
            }
-           ret[retIndex] = array[auxIndex];
        }
        return ret;
    }
