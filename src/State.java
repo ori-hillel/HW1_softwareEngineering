@@ -17,6 +17,9 @@ public class State {
     public State(Board board) {
         this.board = board;
     }
+    public Board getBoard() {
+        return this.board;
+    }
     @Override
     public boolean equals(Object other) {
         if (!(other instanceof State)) {
