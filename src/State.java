@@ -14,6 +14,9 @@ public class State {
     private static final int EMPTY = 0;
     private Board board;
 
+    public State(Board board) {
+        this.board = board;
+    }
     @Override
     public boolean equals(Object other) {
         if (!(other instanceof State)) {
@@ -33,32 +36,32 @@ public class State {
     }
 
     public State result(Action action) {
+        State ret = new State(this.board.duplicate());
         int rowIndex = 0, colIndex = 0;
-        for (int i = 0; i < this.board.getTiles().length; i++)
-            for (int j = 0; j < this.board.getTiles().length; j++) {
-                if (this.board.getTiles()[i][j].getValue() == EMPTY) {
+        for (int i = 0; i < ret.board.getTiles().length; i++)
+            for (int j = 0; j < ret.board.getTiles().length; j++) {
+                if (ret.board.getTiles()[i][j].getValue() == EMPTY) {
                     colIndex = j;
                     rowIndex = i;
                     break;
                 }
-
             }
         if (action.getDirection().equals(UP)) {
-            Board.swap(this.board.getTiles()[rowIndex][colIndex], this.board.getTiles()[rowIndex + 1][colIndex]);
+            Board.swap(ret.board.getTiles()[rowIndex][colIndex], ret.board.getTiles()[rowIndex + 1][colIndex]);
         }
         else if (action.getDirection().equals(DOWN)) {
-            Board.swap(this.board.getTiles()[rowIndex][colIndex], this.board.getTiles()[rowIndex - 1][colIndex]);
+            Board.swap(ret.board.getTiles()[rowIndex][colIndex], ret.board.getTiles()[rowIndex - 1][colIndex]);
         }
         else if (action.getDirection().equals(LEFT)) {
-            Board.swap(this.board.getTiles()[rowIndex][colIndex], this.board.getTiles()[rowIndex][colIndex + 1]);
+            Board.swap(ret.board.getTiles()[rowIndex][colIndex], ret.board.getTiles()[rowIndex][colIndex + 1]);
         }
         else if (action.getDirection().equals(RIGHT)) {
-            Board.swap(this.board.getTiles()[rowIndex][colIndex], this.board.getTiles()[rowIndex][colIndex - 1]);
+            Board.swap(ret.board.getTiles()[rowIndex][colIndex], ret.board.getTiles()[rowIndex][colIndex - 1]);
         }
+        return ret;
     }
    public Action[] actions() {
        Action[] array = new Action[4];
-
        int colNum = this.board.getTiles()[0].length;
        int rowNum = this.board.getTiles().length;
        int rowIndex = 0, colIndex = 0;
@@ -78,7 +81,21 @@ public class State {
            array[I_RIGHT] = new Action(this.board.getTiles()[rowIndex][colIndex + 1], RIGHT);
        if (rowIndex < rowNum && colIndex - 1 < colNum)
            array[I_LEFT] = new Action(this.board.getTiles()[rowIndex][colIndex - 1], LEFT);
-       return array;
+       Action[] ret = new Action[countNulls(array)];
+       for (int retIndex = 0, auxIndex = 0; retIndex < ret.length; retIndex++, auxIndex++) {
+           if (array[auxIndex] == null) {
+               auxIndex++;
+               continue;
+           }
+           ret[retIndex] = array[auxIndex];
+       }
+       return ret;
    }
-
+   private static int countNulls(Action[] array) {
+        int nullCounter = 0;
+        for (int i = 0; i < array.length; i++) {
+            if (array[i] == null) nullCounter++;
+        }
+        return (array.length - nullCounter);
+   }
 }
