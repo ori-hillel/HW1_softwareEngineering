@@ -2,7 +2,7 @@ import java.util.concurrent.RecursiveTask;
 
 public class State {
     private static final Enum  UP= new Enum("UP");
-    private static final Enum DOWN = new Enum("DOWN")
+    private static final Enum DOWN = new Enum("DOWN");
     private static final Enum LEFT = new Enum("LEFT");
     private static final Enum RIGHT = new Enum("RIGHT");
 
