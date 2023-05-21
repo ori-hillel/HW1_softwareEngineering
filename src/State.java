@@ -79,9 +79,9 @@ public class State {
            }
        if (rowIndex + 1 < rowNum)
            array[I_UP] = new Action(this.board.getTiles()[rowIndex + 1][colIndex], UP);
-       if (rowIndex - 1 > 0)
+       if (rowIndex - 1 >= 0)
            array[I_DOWN] = new Action(this.board.getTiles()[rowIndex - 1][colIndex], DOWN);
-       if (colIndex - 1 > 0)
+       if (colIndex - 1 >= 0)
            array[I_RIGHT] = new Action(this.board.getTiles()[rowIndex][colIndex - 1], RIGHT);
        if (colIndex + 1 < colNum)
            array[I_LEFT] = new Action(this.board.getTiles()[rowIndex][colIndex + 1], LEFT);
