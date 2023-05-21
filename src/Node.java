@@ -15,6 +15,9 @@ public class Node {
     public void setRoot(Node root) {
         this.root = root;
     }
+    public Node getParent() {
+        return this.root;
+    }
     public void setState(State s) {
         this.state = s;
     }
