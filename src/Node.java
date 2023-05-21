@@ -1,8 +1,11 @@
 public class Node {
     private State state;
-    Node root;
-    Action action;
+    private Node root;
+    private Action action;
 
+    public Node () {
+
+    }
     public State getState() {
         return this.state;
     }
@@ -14,10 +17,13 @@ public class Node {
     }
 
     public Node[] expand() {
-        Node[] res = new Node(this.state.actions().length);
-        for (int i = 0; i < res.length; i++) {
-            res[i].setRoot(this);
-            res.
+        Action actions[] = this.state.actions();
+        Node[] ret = new Node[actions.length];
+        for (int i = 0; i < ret.length; i++) {
+            ret[i].root = this;
+            ret[i].action = actions[i];
+            ret[i].state = this.state.result(actions[i]);
         }
+        return ret;
     }
 }
