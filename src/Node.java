@@ -18,6 +18,9 @@ public class Node {
     public void setState(State s) {
         this.state = s;
     }
+    public Action getAction() {
+        return this.action;
+    }
 
     public Node[] expand() {
         Action actions[] = this.state.actions();
