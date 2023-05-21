@@ -26,6 +26,13 @@ private Tile[][] tiles;
     public Board (Tile[][] tiles) {
         this.tiles = tiles;
     }
+    public Board duplicate() {
+        Board ret = new Board(new Tile[this.tiles.length][this.tiles[0].length]);
+        for (int row = 0; row < this.tiles.length; row++)
+            for (int col = 0; col < this.tiles[0].length; col++)
+                ret.tiles[row][col] = new Tile(this.tiles[row][col].getValue());
+        return ret;
+    }
     public Board goalBoard() {
         int rows = this.tiles.length;
         int cols = this.tiles[0].length;
