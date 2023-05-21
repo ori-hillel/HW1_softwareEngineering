@@ -89,6 +89,12 @@ private Tile[][] tiles;
                 break;
             }
         }
+        // Swap the elements if both indices are found
+        if (row1 != -1 && col1 != -1 && row2 != -1 && col2 != -1) {
+            Tile temp = this.tiles[row1][col1];
+            this.tiles[row1][col1] = this.tiles[row2][col2];
+            this.tiles[row2][col2] = temp;
+        }
     }
     public int getRow(Tile tile) {
         for (int row = 0; row < this.tiles.length; row++) {
