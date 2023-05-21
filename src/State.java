@@ -50,16 +50,16 @@ public class State {
                 }
             }
         if (action.getDirection().equals(UP)) {
-            Board.swap(ret.board.getTiles()[rowIndex][colIndex], ret.board.getTiles()[rowIndex + 1][colIndex]);
+            ret.board.swap(ret.board.getTiles()[rowIndex][colIndex], ret.board.getTiles()[rowIndex + 1][colIndex]);
         }
         else if (action.getDirection().equals(DOWN)) {
-            Board.swap(ret.board.getTiles()[rowIndex][colIndex], ret.board.getTiles()[rowIndex - 1][colIndex]);
+            ret.board.swap(ret.board.getTiles()[rowIndex][colIndex], ret.board.getTiles()[rowIndex - 1][colIndex]);
         }
         else if (action.getDirection().equals(LEFT)) {
-            Board.swap(ret.board.getTiles()[rowIndex][colIndex], ret.board.getTiles()[rowIndex][colIndex + 1]);
+            ret.board.swap(ret.board.getTiles()[rowIndex][colIndex], ret.board.getTiles()[rowIndex][colIndex + 1]);
         }
         else if (action.getDirection().equals(RIGHT)) {
-            Board.swap(ret.board.getTiles()[rowIndex][colIndex], ret.board.getTiles()[rowIndex][colIndex - 1]);
+            ret.board.swap(ret.board.getTiles()[rowIndex][colIndex], ret.board.getTiles()[rowIndex][colIndex - 1]);
         }
         return ret;
     }

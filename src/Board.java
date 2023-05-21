@@ -62,10 +62,33 @@ private Tile[][] tiles;
         return Arrays.deepEquals(tiles, board.tiles);
     }
 
-    public static void swap(Tile tile1, Tile tile2) {
-        Tile temp = tile1;
-        tile1 = tile2;
-        tile2 = temp;
+    public void swap(Tile tile1, Tile tile2) {
+        int row1 = -1;
+        int col1 = -1;
+        int row2 = -1;
+        int col2 = -1;
+
+        // Find the indices of obj1 and obj2 in the 2D array
+        for (int i = 0; i < this.tiles.length; i++) {
+            for (int j = 0; j < this.tiles[i].length; j++) {
+                if (this.getTiles()[i][j] == tile1) {
+                    row1 = i;
+                    col1 = j;
+                } else if (this.tiles[i][j] == tile2) {
+                    row2 = i;
+                    col2 = j;
+                }
+                // Break early if both indices are found
+                if (row1 != -1 && col1 != -1 && row2 != -1 && col2 != -1) {
+                    break;
+                }
+            }
+
+            // Break early if both indices are found
+            if (row1 != -1 && col1 != -1 && row2 != -1 && col2 != -1) {
+                break;
+            }
+        }
     }
     public int getRow(Tile tile) {
         for (int row = 0; row < this.tiles.length; row++) {
