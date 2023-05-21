@@ -86,7 +86,7 @@ public class State {
        if (colIndex + 1 < colNum)
            array[I_LEFT] = new Action(this.board.getTiles()[rowIndex][colIndex + 1], LEFT);
        Action[] ret = new Action[countNulls(array)];
-       for (int retIndex = 0, auxIndex = 0; auxIndex < ret.length; auxIndex++) {
+       for (int retIndex = 0, auxIndex = 0; auxIndex < array.length; auxIndex++) {
            if (array[auxIndex] instanceof Action) {
                ret[retIndex] = array[auxIndex];
                retIndex++;
