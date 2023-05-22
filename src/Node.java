@@ -41,10 +41,23 @@ public class Node {
     }
 
     public int heuristicValue() {
-        return sumOfManhattanDistances(this.state.getBoard());
+        return this.sumOfManhattanDistances() + 2*this.totalConflicts();
     }
-    private static int sumOfManhattanDistances (Board board) {
+    private int totalConflicts() {
+        Board board = this.state.getBoard();
         int sum = 0;
+        for (int row = 0; row < board.getTiles().length; row++) {
+            for (int column = 0; column < board.getTiles()[0].length; column++) {
+
+            }
+        }
+    }
+    private static int totalConflictsInLine(Tile[] line) {
+        return 0;
+    }
+    private int sumOfManhattanDistances () {
+        int sum = 0;
+        Board board = this.state.getBoard();
         Board goalBoard = board.goalBoard();
         int currentValue=0, indexRow=0, indexCol=0, indexGoalRow=0, indexGoalCol=0;
         Tile currentTile;
