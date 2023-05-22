@@ -41,17 +41,19 @@ public class Node {
     }
 
     public int heuristicValue() {
-        // sum of manhattan distances from goal board
+        return sumOfManhattanDistances(this.state.getBoard());
+    }
+    private static int sumOfManhattanDistances (Board board) {
         int sum = 0;
-        Board goalBoard = this.state.getBoard().goalBoard();
+        Board goalBoard = board.goalBoard();
         int currentValue=0, indexRow=0, indexCol=0, indexGoalRow=0, indexGoalCol=0;
         Tile currentTile;
-        for (int row = 0; row < this.state.getBoard().getTiles().length; row++) {
-            for (int col = 0; col < this.state.getBoard().getTiles()[0].length; col++) {
-                currentValue = col + row*this.state.getBoard().getTiles().length;
+        for (int row = 0; row < board.getTiles().length; row++) {
+            for (int col = 0; col < board.getTiles()[0].length; col++) {
+                currentValue = col + row * board.getTiles().length;
                 currentTile = new Tile(currentValue);
-                indexRow = this.state.getBoard().getRow(currentTile);
-                indexCol = this.state.getBoard().getColumn(currentTile);
+                indexRow = board.getRow(currentTile);
+                indexCol = board.getColumn(currentTile);
                 indexGoalRow = goalBoard.getRow(currentTile);
                 indexGoalCol = goalBoard.getColumn(currentTile);
                 sum += calcManhattanDistance(indexRow, indexCol, indexGoalRow, indexGoalCol);
