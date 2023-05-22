@@ -68,7 +68,7 @@ private Tile[][] tiles;
         int row2 = -1;
         int col2 = -1;
 
-        // Find the indices of obj1 and obj2 in the 2D array
+        // Find the indices of tile1 and tile2 in the 2D array
         for (int i = 0; i < this.tiles.length; i++) {
             for (int j = 0; j < this.tiles[i].length; j++) {
                 if (this.getTiles()[i][j] == tile1) {
