@@ -42,7 +42,7 @@ public class State {
         State ret = new State(this.board.duplicate());
         int rowIndex = 0, colIndex = 0;
         for (int i = 0; i < ret.board.getTiles().length; i++)
-            for (int j = 0; j < ret.board.getTiles().length; j++) {
+            for (int j = 0; j < ret.board.getTiles()[0].length; j++) {
                 if (ret.board.getTiles()[i][j].getValue() == EMPTY) {
                     colIndex = j;
                     rowIndex = i;
@@ -96,9 +96,9 @@ public class State {
    }
    private static int countNulls(Action[] array) {
         int nullCounter = 0;
-        for (int i = 0; i < array.length; i++) {
-            if (array[i] == null) nullCounter++;
-        }
+       for (Action action : array) {
+           if (action == null) nullCounter++;
+       }
         return (array.length - nullCounter);
    }
 }
