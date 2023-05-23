@@ -40,15 +40,8 @@ public class State {
 
     public State result(Action action) {
         State ret = new State(this.board.duplicate());
-        int rowIndex = 0, colIndex = 0;
-        for (int i = 0; i < ret.board.getTiles().length; i++)
-            for (int j = 0; j < ret.board.getTiles()[0].length; j++) {
-                if (ret.board.getTiles()[i][j].getValue() == EMPTY) {
-                    colIndex = j;
-                    rowIndex = i;
-                    break;
-                }
-            }
+        int rowIndex = ret.board.getRow(new Tile(EMPTY));
+        int colIndex = ret.board.getColumn(new Tile(EMPTY));
         if (action.getDirection().equals(UP)) {
             ret.board.swap(ret.board.getTiles()[rowIndex][colIndex], ret.board.getTiles()[rowIndex + 1][colIndex]);
         }
@@ -67,16 +60,8 @@ public class State {
        Action[] array = new Action[4];
        int colNum = this.board.getTiles()[0].length;
        int rowNum = this.board.getTiles().length;
-       int rowIndex = 0, colIndex = 0;
-       outerLoop:
-       for (int i = 0; i < this.board.getTiles().length; i++)
-           for (int j = 0; j < this.board.getTiles()[0].length; j++) {
-               if (this.board.getTiles()[i][j].getValue() == EMPTY) {
-                   colIndex = j;
-                   rowIndex = i;
-                   break outerLoop;
-               }
-           }
+       int rowIndex = this.board.getRow(new Tile(EMPTY));
+       int colIndex = this.board.getColumn(new Tile(EMPTY));
        if (rowIndex + 1 < rowNum)
            array[I_UP] = new Action(this.board.getTiles()[rowIndex + 1][colIndex], UP);
        if (rowIndex - 1 >= 0)
