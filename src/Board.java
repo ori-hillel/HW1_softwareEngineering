@@ -1,7 +1,11 @@
 import java.util.Arrays;
 
 public class Board {
-private Tile[][] tiles;
+    /**
+     * The Board class describes a specific playing board.
+     * Consists of a 2D array of tiles.
+     */
+    private Tile[][] tiles;
     public Board (String tileString) {
         String[] rows = tileString.split("\\|");
         int rowsNum = rows.length;
@@ -26,6 +30,11 @@ private Tile[][] tiles;
     public Board (Tile[][] tiles) {
         this.tiles = tiles;
     }
+
+    /**
+     * This method returns a copy of the board.
+     * @return a duplication of the current board.
+     */
     public Board duplicate() {
         Board ret = new Board(new Tile[this.tiles.length][this.tiles[0].length]);
         for (int row = 0; row < this.tiles.length; row++)
@@ -33,6 +42,11 @@ private Tile[][] tiles;
                 ret.tiles[row][col] = new Tile(this.tiles[row][col].getValue());
         return ret;
     }
+
+    /**
+     * calculates the goal board, based on the size of the current board.
+     * @return the goal board.
+     */
     public Board goalBoard() {
         int rows = this.tiles.length;
         int cols = this.tiles[0].length;
@@ -62,6 +76,11 @@ private Tile[][] tiles;
         return Arrays.deepEquals(tiles, board.tiles);
     }
 
+    /**
+     * gets 2 tiles, and performs a swap among the two.
+     * @param tile1 the first tile.
+     * @param tile2 the second tile.
+     */
     public void swap(Tile tile1, Tile tile2) {
         int row1 = -1;
         int col1 = -1;
@@ -89,30 +108,48 @@ private Tile[][] tiles;
                 break;
             }
         }
-        // Swap the elements if both indices are found
+        // Swap the tiles if both indices are found
         if (row1 != -1 && col1 != -1 && row2 != -1 && col2 != -1) {
             Tile temp = this.tiles[row1][col1];
             this.tiles[row1][col1] = this.tiles[row2][col2];
             this.tiles[row2][col2] = temp;
         }
     }
+
+    /**
+     * receives a tile, and returns the row in which the tile is in.
+     * @param tile
+     * @return an integer, which describes the tile's row.
+     */
     public int getRow(Tile tile) {
+        int ret = 0;
         for (int row = 0; row < this.tiles.length; row++) {
             for (int col = 0; col < this.tiles[0].length; col++) {
-                if (this.tiles[row][col].equals(tile))
-                    return row;
+                if (this.tiles[row][col].equals(tile)) {
+                    ret = row;
+                    break;
+                }
             }
         }
-        return this.tiles.length - 1; // will never get to this line.
+        return ret;
     }
+
+    /**
+     * receives a tile, and returns the column in which the tile is in.
+     * @param tile
+     * @return an integer, which describes the tile's column.
+     */
     public int getColumn(Tile tile) {
+        int ret = 0;
         for (int row = 0; row < this.tiles.length; row++) {
             for (int col = 0; col < this.tiles[0].length; col++) {
-                if (this.tiles[row][col].equals(tile))
-                    return col;
+                if (this.tiles[row][col].equals(tile)) {
+                    ret = col;
+                    break;
+                }
             }
         }
-        return this.tiles[0].length - 1; // will never get to this line.
+        return ret;
     }
     @Override
     public int hashCode() {
