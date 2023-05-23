@@ -1,5 +1,9 @@
 public class Tile {
-private int value;
+    /**
+     * describes a tile, which is an attribute of the playing board.
+     * consists of the tile's value (an integer).
+     */
+    private int value;
 
 public Tile(int value) {
     this.value = value;

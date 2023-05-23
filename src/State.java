@@ -1,6 +1,10 @@
 import java.util.concurrent.RecursiveTask;
 
 public class State {
+    /**
+     * The state is an attribute of the Node class, and its purpose is to describe the node's current situation.
+     * Consists of a playing board.
+     */
     private static final Enum  UP= new Enum("UP");
     private static final Enum DOWN = new Enum("DOWN");
     private static final Enum LEFT = new Enum("LEFT");
@@ -34,12 +38,21 @@ public class State {
         return board.hashCode();
     }
 
+    /**
+     * This method checks if the state's board is in its goal position.
+     * @return a boolean (True/False), according to the current state.
+     */
     public boolean isGoal() {
         return this.board.equals(this.board.goalBoard());
     }
 
+    /**
+     * Receives an action, and calculates the state after the action was made.
+     * @param action the action we want to apply to the state's board.
+     * @return a state, which describes the result of the action on the current state.
+     */
     public State result(Action action) {
-        State ret = new State(this.board.duplicate());
+        State ret = new State(this.board.duplicate()); // duplicates the board, so no changes will be applied to the current board.
         int rowIndex = ret.board.getRow(new Tile(EMPTY));
         int colIndex = ret.board.getColumn(new Tile(EMPTY));
         if (action.getDirection().equals(UP)) {
@@ -56,6 +69,11 @@ public class State {
         }
         return ret;
     }
+
+    /**
+     * calculates the possible actions which can be applied for the current state.
+     * @return a 1D array of actions, which consists the legitimate actions for the current state.
+     */
    public Action[] actions() {
        Action[] array = new Action[4];
        int colNum = this.board.getTiles()[0].length;
@@ -70,8 +88,8 @@ public class State {
            array[I_RIGHT] = new Action(this.board.getTiles()[rowIndex][colIndex - 1], RIGHT);
        if (colIndex + 1 < colNum)
            array[I_LEFT] = new Action(this.board.getTiles()[rowIndex][colIndex + 1], LEFT);
-       Action[] ret = new Action[countNulls(array)];
-       for (int retIndex = 0, auxIndex = 0; auxIndex < array.length; auxIndex++) {
+       Action[] ret = new Action[countNulls(array)]; // creates a new array, which ignores the nulls from the first array.
+       for (int retIndex = 0, auxIndex = 0; auxIndex < array.length; auxIndex++) { // iterates over the 2 arrays
            if (array[auxIndex] instanceof Action) {
                ret[retIndex] = array[auxIndex];
                retIndex++;
@@ -79,6 +97,12 @@ public class State {
        }
        return ret;
    }
+
+    /**
+     * An auxiliary function. receives an array of actions, and counts how many instances of the Action class are within the array.
+     * @param array an array of actions.
+     * @return an integer, which describes how many instances of the Action class are within the array.
+     */
    private static int countNulls(Action[] array) {
         int nullCounter = 0;
        for (Action action : array) {
